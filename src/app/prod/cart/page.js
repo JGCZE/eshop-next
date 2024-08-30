@@ -2,6 +2,7 @@
 import React from 'react'
 import { useAppContext } from '@/store/globalStore'
 import Link from 'next/link'
+import Item from './components/Item'
 
 const Cart = () => {
   const { setCartItems, cartItems } = useAppContext()
@@ -15,11 +16,9 @@ const Cart = () => {
           vaše položky:
           <p className='text-yellow-400'>
             {cartItems.map((oneP) => {
-              const { id, name, description } = oneP
               return (
-                <div className='' key={id}>
-                  {console.log(name)}
-                  <div>{name}</div>
+                <div className='' key={oneP.id}>
+                  <Item data={oneP} />
                 </div>
               )
             })}

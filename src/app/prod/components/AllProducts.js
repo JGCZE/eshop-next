@@ -5,8 +5,8 @@ import Cart from "./components/Cart"
 import { useAppContext } from "@/store/globalStore"
 
 const AllProducts = (products) => {
-  const allProd = products.products.data
-  const [AllProducts,] = useState(allProd)
+  const prod = products.products
+  const [AllProducts,] = useState(prod)
   const { setCartItems, cartItems } = useAppContext()
 
   const addProducts = (id) => {

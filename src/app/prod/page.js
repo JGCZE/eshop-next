@@ -1,7 +1,8 @@
 "use server"
 import AllProducts from "./components/AllProducts";
 
-const endpoint = 'https://fakerapi.it/api/v1/products';
+//const endpoint = 'https://fakerapi.it/api/v1/products';
+const endpoint = 'https://fakestoreapi.com/products'
 
 const getAllProducts = async () => {
   try {
@@ -18,7 +19,7 @@ const ProductsPage = async () => {
 
   return (
     <div>
-       <AllProducts products={products} />
+      <AllProducts products={products} />
     </div>
   )
 }
