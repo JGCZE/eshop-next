@@ -7,7 +7,7 @@ import { useAppContext } from "@/store/globalStore"
 const AllProducts = (products) => {
   const prod = products.products
   const [AllProducts,] = useState(prod)
-  const { setCartItems, cartItems } = useAppContext()
+  const { setCartItems, cartItems, addToLS } = useAppContext()
 
   const addProducts = (id) => {
     const existingItem = cartItems.find((item) => item.id === id)
@@ -17,10 +17,13 @@ const AllProducts = (products) => {
         item.id === id ? { ...item, amount: item.amount + 1 } : item
       );
       setCartItems(updatedCartItems)
+      addToLS(updatedCartItems)
     } else {
       const productToAdd = AllProducts.find((product) => product.id === id);
       if (productToAdd) {
-        setCartItems([...cartItems, { ...productToAdd, amount: 1 }]);
+        const newCartItems = [...cartItems, { ...productToAdd, amount: 1 }];
+        setCartItems(newCartItems);
+        addToLS(newCartItems);
       }
     }
   }
