@@ -6,16 +6,24 @@ import Item from './components/Item'
 
 const Cart = () => {
   const { setCartItems, cartItems } = useAppContext()
-  console.log(cartItems)
+  const [itemsFromLS, setItemsFromLS] = useState([])
+
+  useEffect(() => {
+    const itemsFromLS = JSON.parse(localStorage.getItem("cart")) || [];
+    setItemsFromLS(itemsFromLS);
+  }, []);
+
+  console.log(itemsFromLS)
+
   return (
     <div>
       Cart
       <p>Obsah košíku</p>
-      {cartItems.length > 0 ?
+      {itemsFromLS.length > 0 ?
         (<div>
           vaše položky:
           <p className='text-yellow-400'>
-            {cartItems.map((oneP) => {
+            {itemsFromLS.map((oneP) => {
               return (
                 <div className='' key={oneP.id}>
                   <Item data={oneP} />
