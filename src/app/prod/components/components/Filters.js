@@ -1,14 +1,14 @@
 import React from 'react'
 
-const CATEGORY = ["mens", "women", "jewelery", "electronics"];
+const CATEGORY = ["men's clothing", "women's clothing", "jewelery", "electronics"];
 
-const Filters = (setAllProducts) => {
+const Filters = ({ filterByProduct }) => {
 
   return (
     <div className='flex'>
       {CATEGORY.map((category, index) => {
         return (
-          <button className='w-40 h-20 border-2' key={index}>
+          <button className='w-40 h-20 border-2' key={index} onClick={() => filterByProduct(category)}>
             {category}
           </button>
         )

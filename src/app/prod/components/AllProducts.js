@@ -29,6 +29,11 @@ const AllProducts = (products) => {
     }
   }
 
+  const filterByProduct = (products) => {
+    const filteredProducts = prod.filter((cat) => cat.category === products)
+    setAllProducts(filteredProducts)
+  }
+
   return (
     <div>
       <div className="text-xl">
@@ -36,7 +41,7 @@ const AllProducts = (products) => {
       </div>
 
       <div>
-        <Filters setAllProducts={setAllProducts} />
+        <Filters filterByProduct={filterByProduct} />
       </div>
 
       <div className="flex flex-col gap-4">
