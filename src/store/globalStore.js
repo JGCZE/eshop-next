@@ -5,19 +5,19 @@ const AppContext = createContext(null)
 
 const ContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([])
-  const [itemsFromLS, setItemsFromLS] = useState([])
 
-  const addToLS = (cartItems) => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+  const addToLS = (newItems) => {
+    setCartItems(newItems)
+    localStorage.setItem("cart", JSON.stringify(newItems));
   };
 
   useEffect(() => {
     const itemsFromLS = JSON.parse(localStorage.getItem("cart")) || [];
-    setItemsFromLS(itemsFromLS);
+    setCartItems(itemsFromLS);
   }, []);
   
   return (
-    <AppContext.Provider value={{ setCartItems, cartItems, addToLS, itemsFromLS }} >
+    <AppContext.Provider value={{ setCartItems, cartItems, addToLS }} >
       {children}
     </AppContext.Provider>
   )

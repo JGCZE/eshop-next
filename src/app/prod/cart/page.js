@@ -1,11 +1,11 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppContext } from '@/store/globalStore'
 import Link from 'next/link'
 import Item from './components/Item'
 
 const Cart = () => {
-  const { setCartItems, cartItems } = useAppContext()
+  //const { setCartItems, cartItems } = useAppContext()
   const [itemsFromLS, setItemsFromLS] = useState([])
 
   useEffect(() => {

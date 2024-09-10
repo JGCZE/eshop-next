@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { OneProduct } from "./components/OneProduct"
-import Cart from "./components/Cart"
+import CartPreview from "./components/CartPreview"
 import { useAppContext } from "@/store/globalStore"
 
 const AllProducts = (products) => {
@@ -31,7 +31,7 @@ const AllProducts = (products) => {
   return (
     <div>
       <div className="text-xl">
-        <Cart cartItems={cartItems} />
+        <CartPreview cartItems={cartItems} />
       </div>
 
       <div className="flex flex-col gap-4">
