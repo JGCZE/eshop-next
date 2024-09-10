@@ -1,19 +1,15 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { useAppContext } from '@/store/globalStore'
 import Link from 'next/link'
 import Item from './components/Item'
 
 const Cart = () => {
-  //const { setCartItems, cartItems } = useAppContext()
   const [itemsFromLS, setItemsFromLS] = useState([])
 
   useEffect(() => {
     const itemsFromLS = JSON.parse(localStorage.getItem("cart")) || [];
     setItemsFromLS(itemsFromLS);
   }, []);
-
-  console.log(itemsFromLS)
 
   return (
     <div>

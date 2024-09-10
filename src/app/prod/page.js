@@ -1,7 +1,6 @@
 "use server"
 import AllProducts from "./components/AllProducts";
 
-//const endpoint = 'https://fakerapi.it/api/v1/products';
 const endpoint = 'https://fakestoreapi.com/products'
 
 const getAllProducts = async () => {
