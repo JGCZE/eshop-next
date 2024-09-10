@@ -3,10 +3,11 @@ import { useState } from "react"
 import { OneProduct } from "./components/OneProduct"
 import CartPreview from "./components/CartPreview"
 import { useAppContext } from "@/store/globalStore"
+import Filters from "./components/Filters"
 
 const AllProducts = (products) => {
   const prod = products.products
-  const [AllProducts,] = useState(prod)
+  const [AllProducts, setAllProducts] = useState(prod)
   const { setCartItems, cartItems, addToLS } = useAppContext()
 
   const addProducts = (id) => {
@@ -32,6 +33,10 @@ const AllProducts = (products) => {
     <div>
       <div className="text-xl">
         <CartPreview cartItems={cartItems} />
+      </div>
+
+      <div>
+        <Filters setAllProducts={setAllProducts} />
       </div>
 
       <div className="flex flex-col gap-4">
