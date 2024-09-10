@@ -6,8 +6,8 @@ import { useAppContext } from "@/store/globalStore"
 import Filters from "./components/Filters"
 
 const AllProducts = (products) => {
-  const prod = products.products
-  const [AllProducts, setAllProducts] = useState(prod)
+  const AllProducts = products.products
+  const [productsToSHow, setProductsToSHow] = useState(AllProducts)
   const { setCartItems, cartItems, addToLS } = useAppContext()
 
   const addProducts = (id) => {
@@ -20,7 +20,7 @@ const AllProducts = (products) => {
       setCartItems(updatedCartItems)
       addToLS(updatedCartItems)
     } else {
-      const productToAdd = AllProducts.find((product) => product.id === id);
+      const productToAdd = productsToSHow.find((product) => product.id === id);
       if (productToAdd) {
         const newCartItems = [...cartItems, { ...productToAdd, amount: 1 }];
         setCartItems(newCartItems);
@@ -30,8 +30,8 @@ const AllProducts = (products) => {
   }
 
   const filterByProduct = (products) => {
-    const filteredProducts = prod.filter((cat) => cat.category === products)
-    setAllProducts(filteredProducts)
+    const filteredProducts = AllProducts.filter((cat) => cat.category === products)
+    setProductsToSHow(filteredProducts)
   }
 
   return (
@@ -45,7 +45,7 @@ const AllProducts = (products) => {
       </div>
 
       <div className="flex flex-col gap-4">
-        {AllProducts.map((oneProd) => {
+        {productsToSHow.map((oneProd) => {
           return (
             <OneProduct key={oneProd.id} oneProd={oneProd} addProducts={addProducts} />
           )
